@@ -1,11 +1,12 @@
-let display = document.querySelector("#foods");
+let dogsDiv = document.querySelector("#dogFoods");
 
-let request = new XMLHttpRequest();
-request.addEventListener("load", handleLoad);
-request.addEventListener("error", handleError);
 
-request.open("GET", "food.json");
-request.send();
+let request2 = new XMLHttpRequest();
+request2.addEventListener("load", handleLoad);
+request2.addEventListener("error", handleError);
+
+request2.open("GET", "dogs.json");
+request2.send();
 
 function handleLoad(event){
     let foods = (JSON.parse(this.responseText)).dog_brands;
@@ -19,7 +20,7 @@ function handleError(event){
 function displayFoods(foodData){
     foodData.forEach((brand)=>{
         console.log("brand", brand);
-        display.innerHTML += `  <div class="card">
+        dogsDiv.innerHTML += `  <div class="card">
                                 <h2>${brand.name}</h2>
                                 <h4> type: ${brand.types[0].type}</h4>
                                 <p>sizes for ${brand.types[0].type}:</p>
